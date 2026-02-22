@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Hotel App</string>
+
+    <!-- Home -->
+    <string name="welcome_title">Welcome to Hotel App</string>
+    <string name="welcome_subtitle">Enter city and dates to search for hotels</string>
+    <string name="city">City</string>
+    <string name="city_placeholder">e.g. Madrid, Barcelona, Sarajevo</string>
+    <string name="date_from">Date from</string>
+    <string name="date_from_placeholder">Select date from</string>
+    <string name="date_to">Date to</string>
+    <string name="date_to_placeholder">Select date to</string>
+    <string name="clear_date">Clear date</string>
+    <string name="search_hotels">Search hotels</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="language">Language</string>
+
+    <!-- Hotel list -->
+    <string name="hotel_list_title">Hotels</string>
+    <string name="results_for">Results for: %s</string>
+    <string name="no_hotels_found">No hotels found</string>
+    <string name="loading_in_progress">Loading…</string>
+    <string name="sort_price_asc">Price: low to high</string>
+    <string name="sort_price_desc">Price: high to low</string>
+    <string name="min_price_filter">Min price (€/night)</string>
+    <string name="min_price_filter_hint">e.g. 50</string>
+    <string name="max_price_filter">Max price (€/night)</string>
+    <string name="max_price_filter_hint">e.g. 150</string>
+    <string name="filter_and_sort">Filter &amp; sort</string>
+    <string name="available_dates_filter">Available: %1$s – %2$s</string>
+    <string name="filter_sort_sheet_title">Filter and sort</string>
+
+    <!-- Hotel details -->
+    <string name="hotel_details_title">Hotel details</string>
+    <string name="back">Back</string>
+    <string name="book">Book</string>
+    <string name="reserve">Reserve</string>
+    <string name="hotel_description">Description</string>
+    <string name="hotel_description_placeholder">No description available.</string>
+
+    <!-- Create booking -->
+    <string name="create_booking_title">Create booking</string>
+    <string name="create_booking_confirm">Confirm booking</string>
+    <string name="create_booking_total">Total: %.2f €</string>
+
+    <!-- Booking success -->
+    <string name="booking_success_title">Booking confirmed</string>
+    <string name="booking_success_id_label">Booking ID</string>
+    <string name="booking_success_view_bookings">View my bookings</string>
+    <string name="content_desc_booking_success">Booking confirmed successfully</string>
+
+    <!-- Price / Currency -->
+    <string name="price_on_request">Price on request</string>
+    <string name="price_per_night_format">%1$.2f € / night</string>
+    <string name="per_night_suffix"> / night</string>
+    <string name="currency">Currency</string>
+
+    <!-- Compare -->
+    <string name="compare_hotels_title">Compare hotels</string>
+    <string name="compare_select_at_least_two">Select at least 2 hotels to compare.</string>
+    <string name="compare_price">Price</string>
+    <string name="availability">Availability</string>
+    <string name="hotel_name">Name</string>
+    <string name="add_to_compare">Add to compare</string>
+    <string name="compare">Compare (%d)</string>
+
+    <!-- Accessibility (content descriptions, TalkBack) -->
+    <string name="content_desc_language">Language %s</string>
+    <string name="content_desc_select_date_from">Select check-in date</string>
+    <string name="content_desc_select_date_to">Select check-out date</string>
+    <string name="content_desc_compare_fab">Compare selected hotels, %d hotels</string>
+    <string name="content_desc_hotel_card">%s, %s. %s. Double tap to open details.</string>
+    <string name="content_desc_add_to_compare">Add %s to compare</string>
+    <string name="content_desc_remove_from_compare">Remove %s from compare</string>
+    <string name="content_desc_sort_asc">Sort by price, low to high</string>
+    <string name="content_desc_sort_desc">Sort by price, high to low</string>
+    <string name="content_desc_loading">Loading</string>
+
+    <!-- Bottom navigation -->
+    <string name="nav_search">Search</string>
+    <string name="nav_bookings">Bookings</string>
+    <string name="nav_favorites">Favorites</string>
+    <string name="nav_profile">Profile</string>
+    <string name="bookings_placeholder">Your bookings will appear here.</string>
+    <string name="bookings_empty_title">No bookings yet</string>
+    <string name="bookings_dates_format">%1$s – %2$s</string>
+    <string name="bookings_total">Total: %1$.2f €</string>
+    <string name="favorites_placeholder">Saved hotels will appear here. Add favorites from search or hotel details.</string>
+    <string name="favorites_empty_title">No favorites yet</string>
+    <string name="favorites_remove">Remove from favorites</string>
+    <string name="favorites_add">Add to favorites</string>
+    <string name="profile_placeholder">Your profile and settings.</string>
+    <string name="profile_username">Username</string>
+    <string name="profile_username_placeholder">Enter your name</string>
+    <string name="profile_language">Language</string>
+    <string name="profile_currency">Preferred currency</string>
+    <string name="profile_app_version">App version</string>
+    <string name="logout">Log out</string>
+    <string name="logout_mock_message">Log out (mock) – no action</string>
+
+    <!-- Errors -->
+    <string name="error_no_city">No city selected for search.</string>
+    <string name="error_unknown_hotel">Unknown hotel.</string>
+    <string name="error_loading">Error loading.</string>
+    <string name="error_offline_no_data">You\'re offline and there\'s no cached data.</string>
+    <string name="retry">Retry</string>
+</resources>

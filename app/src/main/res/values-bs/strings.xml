@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Hotel App</string>
+
+    <!-- Home -->
+    <string name="welcome_title">Dobrodošli u Hotel App</string>
+    <string name="welcome_subtitle">Unesite grad i periode za pretragu hotela</string>
+    <string name="city">Grad</string>
+    <string name="city_placeholder">npr. Madrid, Barcelona, Sarajevo</string>
+    <string name="date_from">Datum od</string>
+    <string name="date_from_placeholder">Odaberi datum od</string>
+    <string name="date_to">Datum do</string>
+    <string name="date_to_placeholder">Odaberi datum do</string>
+    <string name="clear_date">Obriši datum</string>
+    <string name="search_hotels">Pretraži hotele</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Odustani</string>
+    <string name="language">Jezik</string>
+
+    <!-- Hotel list -->
+    <string name="hotel_list_title">Hoteli</string>
+    <string name="results_for">Rezultati za: %s</string>
+    <string name="no_hotels_found">Nema pronađenih hotela</string>
+    <string name="loading_in_progress">Učitavanje u toku…</string>
+    <string name="sort_price_asc">Cijena: niska → visoka</string>
+    <string name="sort_price_desc">Cijena: visoka → niska</string>
+    <string name="min_price_filter">Min. cijena (€/noć)</string>
+    <string name="min_price_filter_hint">npr. 50</string>
+    <string name="max_price_filter">Maks. cijena (€/noć)</string>
+    <string name="max_price_filter_hint">npr. 150</string>
+    <string name="filter_and_sort">Filter i sortiraj</string>
+    <string name="available_dates_filter">Dostupno: %1$s – %2$s</string>
+    <string name="filter_sort_sheet_title">Filter i sortiranje</string>
+
+    <!-- Hotel details -->
+    <string name="hotel_details_title">Detalji hotela</string>
+    <string name="back">Nazad</string>
+    <string name="book">Rezerviraj</string>
+    <string name="reserve">Rezerviraj</string>
+    <string name="hotel_description">Opis</string>
+    <string name="hotel_description_placeholder">Nema opisa.</string>
+
+    <!-- Price / Currency -->
+    <string name="price_on_request">Cijena na upit</string>
+    <string name="price_per_night_format">%1$.2f € / noć</string>
+    <string name="per_night_suffix"> / noć</string>
+    <string name="currency">Valuta</string>
+
+    <!-- Compare -->
+    <string name="compare_hotels_title">Usporedi hotele</string>
+    <string name="compare_select_at_least_two">Odaberi najmanje 2 hotela za usporedbu.</string>
+    <string name="compare_price">Cijena</string>
+    <string name="availability">Dostupnost</string>
+    <string name="hotel_name">Naziv</string>
+    <string name="add_to_compare">Dodaj u usporedbu</string>
+    <string name="compare">Usporedi (%d)</string>
+
+    <!-- Accessibility -->
+    <string name="content_desc_language">Jezik %s</string>
+    <string name="content_desc_select_date_from">Odaberi datum prijave</string>
+    <string name="content_desc_select_date_to">Odaberi datum odjave</string>
+    <string name="content_desc_compare_fab">Usporedi odabrane hotele, %d hotela</string>
+    <string name="content_desc_hotel_card">%s, %s. %s. Dvostruki dodir za detalje.</string>
+    <string name="content_desc_add_to_compare">Dodaj %s u usporedbu</string>
+    <string name="content_desc_remove_from_compare">Ukloni %s iz usporedbe</string>
+    <string name="content_desc_sort_asc">Sortiraj po cijeni, niska do visoka</string>
+    <string name="content_desc_sort_desc">Sortiraj po cijeni, visoka do niska</string>
+    <string name="content_desc_loading">Učitavanje</string>
+
+    <!-- Errors -->
+    <string name="error_no_city">Nije odabran grad za pretragu.</string>
+    <string name="error_unknown_hotel">Nepoznat hotel.</string>
+    <string name="error_loading">Greška pri učitavanju.</string>
+    <string name="favorites_placeholder">Spremljeni hoteli će se pojaviti ovdje. Dodajte favorite iz pretrage ili detalja hotela.</string>
+    <string name="favorites_empty_title">Još nema favorita</string>
+    <string name="favorites_remove">Ukloni iz favorita</string>
+    <string name="favorites_add">Dodaj u favorite</string>
+    <string name="profile_username">Korisničko ime</string>
+    <string name="profile_username_placeholder">Unesite svoje ime</string>
+    <string name="logout">Odjava</string>
+    <string name="logout_mock_message">Odjava (mock) – bez radnje</string>
+
+    <!-- Bottom navigation -->
+    <string name="nav_search">Pretraga</string>
+    <string name="nav_bookings">Rezervacije</string>
+    <string name="nav_favorites">Favoriti</string>
+    <string name="nav_profile">Profil</string>
+</resources>

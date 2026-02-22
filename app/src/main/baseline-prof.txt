@@ -1,0 +1,6 @@
+# Baseline profile za HotelApp. Za puni profil: pokreni Macrobenchmark s BaselineProfileRule
+# i kopiraj generirani file ovdje. Minimalan set ispod pokriva kritični put.
+HSP
+Lcom/example/hotelapp/HotelApplication;
+Lcom/example/hotelapp/MainActivity;
+Lcom/example/hotelapp/MainActivity;->onCreate(Landroid/os/Bundle;)V
