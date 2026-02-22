@@ -4,11 +4,9 @@ Android app for hotel search, bookings, and comparison. Offline-first architectu
 
 ## Screenshots
 
-| Search & list | Hotel details | Booking success |
-|---------------|---------------|-----------------|
-| ![Search](screenshots/screen_search.png) | ![Details](screenshots/screen_details.png) | ![Success](screenshots/screen_success.png) |
-
-Screenshots go in the `screenshots/` folder. From the emulator: **Extended controls → Camera** (or `Ctrl+S` / `Cmd+S`) to save a screenshot, then rename and place the files above.
+| Search & list | Main screen | Booking |
+|---------------|-------------|---------|
+| ![Search](search_screen.png) | ![Main](main_screen.png) | ![Booking](booking_screen.png) |
 
 ## Tech stack
 
