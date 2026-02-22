@@ -43,6 +43,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.hotelapp.R
+import com.example.hotelapp.ui.components.ErrorWithRetry
 import com.example.hotelapp.ui.components.HotelAppBarTitle
 import com.example.hotelapp.ui.theme.hotelAppOutlinedTextFieldColors
 import com.example.hotelapp.ui.util.formatPrice
@@ -89,10 +90,9 @@ fun CreateBookingScreen(
                     CircularProgressIndicator(Modifier.align(Alignment.Center))
                 }
                 uiState.error != null && uiState.hotel == null -> {
-                    Text(
-                        text = uiState.error!!,
-                        color = MaterialTheme.colorScheme.error,
-                        modifier = Modifier.align(Alignment.Center).padding(16.dp)
+                    ErrorWithRetry(
+                        message = uiState.error!!,
+                        modifier = Modifier.align(Alignment.Center)
                     )
                 }
                 else -> {

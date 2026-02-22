@@ -1,11 +1,14 @@
 package com.example.hotelapp.ui.compare
 
+import android.content.Context
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.hotelapp.data.preferences.UserPreferencesRepository
 import com.example.hotelapp.domain.model.Hotel
 import com.example.hotelapp.domain.usecase.GetHotelsByIdsUseCase
+import com.example.hotelapp.ui.util.toAppFailure
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -20,6 +23,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CompareHotelsViewModel @Inject constructor(
+    @ApplicationContext private val context: Context,
     savedStateHandle: SavedStateHandle,
     userPreferencesRepository: UserPreferencesRepository,
     getHotelsByIdsUseCase: GetHotelsByIdsUseCase
@@ -56,7 +60,7 @@ class CompareHotelsViewModel @Inject constructor(
                     _isLoading.value = false
                 }
                 .catch { e ->
-                    _error.value = e.message ?: "Error loading hotels"
+                    _error.value = e.toAppFailure(context).userMessage
                     _isLoading.value = false
                 }
                 .launchIn(viewModelScope)

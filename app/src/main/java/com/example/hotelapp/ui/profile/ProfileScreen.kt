@@ -111,7 +111,7 @@ fun ProfileScreen(
                 leadingIcon = {
                     Icon(
                         imageVector = Icons.Default.Person,
-                        contentDescription = null
+                        contentDescription = stringResource(R.string.content_desc_username_field)
                     )
                 },
                 singleLine = true,
@@ -135,7 +135,7 @@ fun ProfileScreen(
                     leadingIcon = {
                         Icon(
                             imageVector = Icons.Default.Language,
-                            contentDescription = null
+                            contentDescription = stringResource(R.string.content_desc_language_field)
                         )
                     },
                     trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = languageExpanded) },
@@ -179,7 +179,7 @@ fun ProfileScreen(
                     leadingIcon = {
                         Icon(
                             imageVector = Icons.Default.Paid,
-                            contentDescription = null
+                            contentDescription = stringResource(R.string.content_desc_currency_field)
                         )
                     },
                     trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = currencyExpanded) },
@@ -212,7 +212,7 @@ fun ProfileScreen(
             ) {
                 Icon(
                     imageVector = Icons.Default.Info,
-                    contentDescription = null,
+                    contentDescription = stringResource(R.string.content_desc_app_version_info),
                     modifier = Modifier.size(24.dp)
                 )
                 Spacer(modifier = Modifier.size(16.dp))

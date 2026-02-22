@@ -4,6 +4,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.Pager
 import androidx.paging.map
+import com.example.hotelapp.crash.CrashLogger
 import com.example.hotelapp.data.enrichment.HotelDataEnhancer
 import com.example.hotelapp.data.local.LocalDataSource
 import com.example.hotelapp.data.local.toDomain
@@ -22,14 +23,11 @@ import kotlinx.coroutines.flow.merge
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-/**
- * Offline-first: prvo emituje iz Room-a, u pozadini dohvaća s API-ja, snima u Room;
- * Flow iz locala ponovo emituje kad se baza ažurira. Filtriranje po gradu i rasponu datuma radi lokalno nad kešom.
- */
 class HotelRepositoryImpl @Inject constructor(
     private val remoteDataSource: RemoteDataSource,
     private val localDataSource: LocalDataSource,
-    private val hotelDataEnhancer: HotelDataEnhancer
+    private val hotelDataEnhancer: HotelDataEnhancer,
+    private val crashLogger: CrashLogger
 ) : HotelRepository {
 
     override fun getHotels(
@@ -42,8 +40,8 @@ class HotelRepositoryImpl @Inject constructor(
                 try {
                     val hotels = remoteDataSource.getHotels(city).map { hotelDataEnhancer.enhance(it) }
                     localDataSource.saveHotels(hotels)
-                } catch (_: Exception) {
-                    // ostavi postojeće lokalne podatke; ne prekida Flow
+                } catch (e: Exception) {
+                    crashLogger.log(e, "getHotels: fetch or save failed for city=$city")
                 }
             }
         }
@@ -78,12 +76,6 @@ class HotelRepositoryImpl @Inject constructor(
         }
     }
 
-    /**
-     * Lokalno filtriranje: isključi hotele koji nisu dostupni u odabranom rasponu.
-     * Kad su [checkInDay] i [checkOutDay] postavljeni (≥ 0), uključeni su samo hotele čiji
-     * raspon dostupnosti (availableFromDay..availableToDay) preklapa odabrani raspon.
-     * Hotele bez unesenog raspona dostupnosti isključujemo kad je datum odabran.
-     */
     private fun filterByDateRange(
         hotels: List<Hotel>,
         checkInDay: Long?,
@@ -102,8 +94,8 @@ class HotelRepositoryImpl @Inject constructor(
             launch {
                 try {
                     remoteDataSource.getHotelById(id)?.let { localDataSource.saveHotel(hotelDataEnhancer.enhance(it)) }
-                } catch (_: Exception) {
-                    // ostavi postojeće lokalne podatke
+                } catch (e: Exception) {
+                    crashLogger.log(e, "getHotelById: fetch or save failed for id=$id")
                 }
             }
         }

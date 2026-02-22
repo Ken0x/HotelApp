@@ -71,12 +71,17 @@
     <string name="content_desc_select_date_from">Select check-in date</string>
     <string name="content_desc_select_date_to">Select check-out date</string>
     <string name="content_desc_compare_fab">Compare selected hotels, %d hotels</string>
-    <string name="content_desc_hotel_card">%s, %s. %s. Double tap to open details.</string>
+    <string name="content_desc_hotel_card">%1$s, %2$s. %3$s. Double tap to open details.</string>
     <string name="content_desc_add_to_compare">Add %s to compare</string>
     <string name="content_desc_remove_from_compare">Remove %s from compare</string>
     <string name="content_desc_sort_asc">Sort by price, low to high</string>
     <string name="content_desc_sort_desc">Sort by price, high to low</string>
     <string name="content_desc_loading">Loading</string>
+    <string name="content_desc_app_logo">App logo</string>
+    <string name="content_desc_username_field">Username field</string>
+    <string name="content_desc_language_field">Language selection</string>
+    <string name="content_desc_currency_field">Preferred currency</string>
+    <string name="content_desc_app_version_info">App version information</string>
 
     <!-- Bottom navigation -->
     <string name="nav_search">Search</string>

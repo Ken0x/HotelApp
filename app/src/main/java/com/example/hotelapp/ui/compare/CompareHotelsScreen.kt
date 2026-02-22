@@ -33,6 +33,8 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.hotelapp.R
+import com.example.hotelapp.ui.components.EmptyState
+import com.example.hotelapp.ui.components.ErrorWithRetry
 import com.example.hotelapp.ui.components.HotelAppBarTitle
 import com.example.hotelapp.ui.theme.Spacing
 import com.example.hotelapp.domain.model.Hotel
@@ -98,23 +100,15 @@ fun CompareHotelsScreen(
                     }
                 }
                 error != null -> {
-                    Text(
-                        text = error!!,
-                        style = MaterialTheme.typography.bodyLarge,
-                        color = MaterialTheme.colorScheme.error,
-                        modifier = Modifier
-                            .align(Alignment.Center)
-                            .padding(24.dp)
+                    ErrorWithRetry(
+                        message = error!!,
+                        modifier = Modifier.align(Alignment.Center)
                     )
                 }
                 hotels.size < 2 -> {
-                    Text(
-                        text = stringResource(R.string.compare_select_at_least_two),
-                        style = MaterialTheme.typography.bodyLarge,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        modifier = Modifier
-                            .align(Alignment.Center)
-                            .padding(24.dp)
+                    EmptyState(
+                        message = stringResource(R.string.compare_select_at_least_two),
+                        modifier = Modifier.align(Alignment.Center)
                     )
                 }
                 else -> {

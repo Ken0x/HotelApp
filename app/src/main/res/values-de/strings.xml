@@ -60,12 +60,17 @@
     <string name="content_desc_select_date_from">Check-in-Datum wählen</string>
     <string name="content_desc_select_date_to">Check-out-Datum wählen</string>
     <string name="content_desc_compare_fab">Ausgewählte Hotels vergleichen, %d Hotels</string>
-    <string name="content_desc_hotel_card">%s, %s. %s. Doppeltippen für Details.</string>
+    <string name="content_desc_hotel_card">%1$s, %2$s. %3$s. Doppeltippen für Details.</string>
     <string name="content_desc_add_to_compare">%s zum Vergleich hinzufügen</string>
     <string name="content_desc_remove_from_compare">%s aus Vergleich entfernen</string>
     <string name="content_desc_sort_asc">Nach Preis sortieren, niedrig bis hoch</string>
     <string name="content_desc_sort_desc">Nach Preis sortieren, hoch bis niedrig</string>
     <string name="content_desc_loading">Wird geladen</string>
+    <string name="content_desc_app_logo">App-Logo</string>
+    <string name="content_desc_username_field">Benutzernamefeld</string>
+    <string name="content_desc_language_field">Sprachauswahl</string>
+    <string name="content_desc_currency_field">Bevorzugte Währung</string>
+    <string name="content_desc_app_version_info">App-Versionsinformationen</string>
 
     <!-- Errors -->
     <string name="error_no_city">Keine Stadt für die Suche ausgewählt.</string>

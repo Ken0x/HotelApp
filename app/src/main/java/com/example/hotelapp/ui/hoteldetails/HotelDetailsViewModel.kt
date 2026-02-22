@@ -10,6 +10,7 @@ import com.example.hotelapp.data.preferences.UserPreferencesRepository
 import com.example.hotelapp.domain.model.Hotel
 import com.example.hotelapp.domain.usecase.GetHotelByIdUseCase
 import com.example.hotelapp.ui.UiState
+import com.example.hotelapp.ui.util.toAppFailure
 import com.example.hotelapp.domain.usecase.ToggleFavoriteUseCase
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -72,7 +73,7 @@ class HotelDetailsViewModel @Inject constructor(
             }
             .catch { e ->
                 _uiState.update {
-                    UiState.Error(e.message ?: context.getString(R.string.error_loading))
+                    UiState.Error(e.toAppFailure(context).userMessage)
                 }
             }
             .launchIn(viewModelScope)

@@ -74,6 +74,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.hotelapp.R
 import com.example.hotelapp.domain.model.Hotel
+import com.example.hotelapp.ui.components.EmptyState
+import com.example.hotelapp.ui.components.ErrorWithRetry
 import com.example.hotelapp.ui.components.HotelAppBarTitle
 import com.example.hotelapp.ui.UiState
 import com.example.hotelapp.ui.theme.HotelAppTheme
@@ -264,42 +266,19 @@ internal fun HotelListScreenContent(
                     }
 
                     loadState is LoadState.Error -> {
-                        Column(
-                            modifier = Modifier
-                                .fillMaxSize()
-                                .padding(Spacing.large),
-                            horizontalAlignment = Alignment.CenterHorizontally,
-                            verticalArrangement = Arrangement.Center
-                        ) {
-                            Text(
-                                text = loadState.error.message
-                                    ?: stringResource(R.string.error_loading),
-                                style = MaterialTheme.typography.bodyLarge,
-                                color = MaterialTheme.colorScheme.error
-                            )
-                            ScaleAnimatedButton(
-                                onClick = { onEvent(HotelListUiEvent.Retry) },
-                                modifier = Modifier.padding(top = 16.dp)
-                            ) {
-                                Text(stringResource(R.string.retry))
-                            }
-                        }
+                        ErrorWithRetry(
+                            message = loadState.error.message ?: stringResource(R.string.error_loading),
+                            onRetry = { onEvent(HotelListUiEvent.Retry) },
+                            modifier = Modifier.fillMaxSize(),
+                            buttonText = stringResource(R.string.retry)
+                        )
                     }
 
                     hotelsPaged.itemCount == 0 -> {
-                        Column(
-                            modifier = Modifier
-                                .fillMaxSize()
-                                .padding(Spacing.large),
-                            horizontalAlignment = Alignment.CenterHorizontally,
-                            verticalArrangement = Arrangement.Center
-                        ) {
-                            Text(
-                                text = stringResource(R.string.no_hotels_found),
-                                style = MaterialTheme.typography.bodyLarge,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant
-                            )
-                        }
+                        EmptyState(
+                            message = stringResource(R.string.no_hotels_found),
+                            modifier = Modifier.fillMaxSize()
+                        )
                     }
 
                     else -> {
@@ -472,25 +451,12 @@ internal fun HotelListScreenContent(
                     }
 
                     is UiState.Error -> {
-                        Column(
-                            modifier = Modifier
-                                .fillMaxSize()
-                                .padding(Spacing.large),
-                            horizontalAlignment = Alignment.CenterHorizontally,
-                            verticalArrangement = Arrangement.Center
-                        ) {
-                            Text(
-                                text = state.message,
-                                style = MaterialTheme.typography.bodyLarge,
-                                color = MaterialTheme.colorScheme.error
-                            )
-                            ScaleAnimatedButton(
-                                onClick = { onEvent(HotelListUiEvent.Retry) },
-                                modifier = Modifier.padding(top = 16.dp)
-                            ) {
-                                Text(stringResource(R.string.retry))
-                            }
-                        }
+                        ErrorWithRetry(
+                            message = state.message,
+                            onRetry = { onEvent(HotelListUiEvent.Retry) },
+                            modifier = Modifier.fillMaxSize(),
+                            buttonText = stringResource(R.string.retry)
+                        )
                     }
                 }
             }

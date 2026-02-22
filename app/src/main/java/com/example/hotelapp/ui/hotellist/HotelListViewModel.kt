@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import com.example.hotelapp.R
 import com.example.hotelapp.analytics.AnalyticsTracker
+import com.example.hotelapp.ui.util.toAppFailure
 import com.example.hotelapp.domain.model.Hotel
 import com.example.hotelapp.ui.UiState
 import com.example.hotelapp.data.preferences.UserPreferencesRepository
@@ -28,7 +29,6 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import java.io.IOException
 import javax.inject.Inject
 
 @HiltViewModel
@@ -86,44 +86,25 @@ class HotelListViewModel @Inject constructor(
     fun onEvent(event: HotelListUiEvent) {
         when (event) {
             is HotelListUiEvent.SortByPriceAscChange ->
-                _state.update { reduce(it, event) }
+                _state.update { HotelListReducer.reduce(it, event) }
             is HotelListUiEvent.MinPriceChange ->
-                _state.update { reduce(it, event) }
+                _state.update { HotelListReducer.reduce(it, event) }
             is HotelListUiEvent.MaxPriceChange ->
-                _state.update { reduce(it, event) }
+                _state.update { HotelListReducer.reduce(it, event) }
             is HotelListUiEvent.AddToCompare -> {
                 val current = _state.value.selectedForCompare
                 if (event.hotelId !in current && current.size < 3) {
                     analyticsTracker.trackFavorite(event.hotelId, hotelName = null)
-                    _state.update { reduce(it, event) }
+                    _state.update { HotelListReducer.reduce(it, event) }
                 }
             }
             is HotelListUiEvent.RemoveFromCompare ->
-                _state.update { reduce(it, event) }
+                _state.update { HotelListReducer.reduce(it, event) }
             HotelListUiEvent.DismissSnackbar -> { }
             HotelListUiEvent.Refresh, HotelListUiEvent.Retry ->
                 performRefresh()
         }
     }
-
-    private fun reduce(state: HotelListState, event: HotelListUiEvent): HotelListState =
-        when (event) {
-            is HotelListUiEvent.SortByPriceAscChange ->
-                state.copy(sortByPriceAsc = event.ascending)
-            is HotelListUiEvent.MinPriceChange ->
-                state.copy(minPrice = event.price)
-            is HotelListUiEvent.MaxPriceChange ->
-                state.copy(maxPrice = event.price)
-            is HotelListUiEvent.AddToCompare -> {
-                val list = state.selectedForCompare
-                if (event.hotelId in list || list.size >= 3) state
-                else state.copy(selectedForCompare = list + event.hotelId)
-            }
-            is HotelListUiEvent.RemoveFromCompare ->
-                state.copy(selectedForCompare = state.selectedForCompare - event.hotelId)
-            HotelListUiEvent.Refresh, HotelListUiEvent.Retry,
-            HotelListUiEvent.DismissSnackbar -> state
-        }
 
     private fun performRefresh() {
         if (searchCity.isBlank()) return
@@ -132,10 +113,8 @@ class HotelListViewModel @Inject constructor(
             try {
                 refreshHotelsUseCase(searchCity)
                 _refreshTrigger.emit(Unit)
-            } catch (e: IOException) {
-                _effects.emit(HotelListUiEffect.ShowSnackbar(context.getString(R.string.error_offline_no_data)))
             } catch (e: Exception) {
-                _effects.emit(HotelListUiEffect.ShowSnackbar(e.message ?: context.getString(R.string.error_loading)))
+                _effects.emit(HotelListUiEffect.ShowSnackbar(e.toAppFailure(context).userMessage))
             } finally {
                 _state.update { it.copy(isRefreshing = false) }
             }
@@ -146,10 +125,8 @@ class HotelListViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 refreshHotelsUseCase(city)
-            } catch (e: IOException) {
-                _effects.emit(HotelListUiEffect.ShowSnackbar(context.getString(R.string.error_offline_no_data)))
             } catch (e: Exception) {
-                _effects.emit(HotelListUiEffect.ShowSnackbar(e.message ?: context.getString(R.string.error_loading)))
+                _effects.emit(HotelListUiEffect.ShowSnackbar(e.toAppFailure(context).userMessage))
             }
         }
     }

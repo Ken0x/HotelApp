@@ -1,13 +1,16 @@
 package com.example.hotelapp.ui.createbooking
 
+import android.content.Context
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.hotelapp.domain.model.Booking
 import com.example.hotelapp.domain.model.Hotel
+import com.example.hotelapp.ui.util.toAppFailure
 import com.example.hotelapp.domain.usecase.CreateBookingUseCase
 import com.example.hotelapp.domain.usecase.GetHotelByIdUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -44,6 +47,7 @@ data class CreateBookingUiState(
 
 @HiltViewModel
 class CreateBookingViewModel @Inject constructor(
+    @ApplicationContext private val context: Context,
     private val getHotelByIdUseCase: GetHotelByIdUseCase,
     private val createBookingUseCase: CreateBookingUseCase,
     savedStateHandle: SavedStateHandle
@@ -120,7 +124,7 @@ class CreateBookingViewModel @Inject constructor(
             onSuccess(bookingId)
         } catch (e: Exception) {
             _uiState.update {
-                it.copy(isSaving = false, error = e.message ?: "Failed to save booking")
+                it.copy(isSaving = false, error = e.toAppFailure(context).userMessage)
             }
         }
     }

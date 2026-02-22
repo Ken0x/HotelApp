@@ -36,6 +36,7 @@ import java.util.Locale
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.hotelapp.R
+import com.example.hotelapp.ui.components.ErrorWithRetry
 import com.example.hotelapp.ui.components.HotelAppBarTitle
 import com.example.hotelapp.domain.model.Hotel
 import com.example.hotelapp.ui.UiState
@@ -170,40 +171,20 @@ internal fun HotelDetailsScreenContent(
                     }
                 }
                 is UiState.Error -> {
-                    Column(
-                        modifier = Modifier
-                            .align(Alignment.Center)
-                            .padding(Spacing.default),
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.spacedBy(Spacing.default)
-                    ) {
-                        Text(
-                            text = state.message,
-                            color = MaterialTheme.colorScheme.error,
-                            style = MaterialTheme.typography.bodyLarge
-                        )
-                        ScaleAnimatedButton(onClick = onNavigateBack) {
-                            Text(backButton)
-                        }
-                    }
+                    ErrorWithRetry(
+                        message = state.message,
+                        onRetry = onNavigateBack,
+                        modifier = Modifier.align(Alignment.Center),
+                        buttonText = backButton
+                    )
                 }
                 is UiState.Empty -> {
-                    Column(
-                        modifier = Modifier
-                            .align(Alignment.Center)
-                            .padding(Spacing.default),
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.spacedBy(Spacing.default)
-                    ) {
-                        Text(
-                            text = stringResource(R.string.error_unknown_hotel),
-                            style = MaterialTheme.typography.bodyLarge,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-                        ScaleAnimatedButton(onClick = onNavigateBack) {
-                            Text(backButton)
-                        }
-                    }
+                    ErrorWithRetry(
+                        message = stringResource(R.string.error_unknown_hotel),
+                        onRetry = onNavigateBack,
+                        modifier = Modifier.align(Alignment.Center),
+                        buttonText = backButton
+                    )
                 }
             }
         }

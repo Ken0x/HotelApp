@@ -26,7 +26,7 @@ fun HotelAppBarTitle(modifier: Modifier = Modifier) {
     ) {
         Image(
             painter = painterResource(R.drawable.ic_launcher),
-            contentDescription = null,
+            contentDescription = stringResource(R.string.content_desc_app_logo),
             modifier = Modifier.size(40.dp)
         )
         Spacer(modifier = Modifier.width(12.dp))

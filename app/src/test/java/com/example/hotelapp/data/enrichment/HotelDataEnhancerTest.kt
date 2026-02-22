@@ -57,7 +57,7 @@ class HotelDataEnhancerTest {
 
     @Test
     fun enhance_existingAvailability_preserved() {
-        val hotel = Hotel("id", "H", "C", 80.0, 19_700L, 19_800L)
+        val hotel = Hotel("id", "H", "C", 80.0, null, 19_700L, 19_800L)
         val enhanced = enhancer.enhance(hotel)
         assertEquals(19_700L, enhanced.availableFromDay)
         assertEquals(19_800L, enhanced.availableToDay)

@@ -60,12 +60,17 @@
     <string name="content_desc_select_date_from">Odaberi datum prijave</string>
     <string name="content_desc_select_date_to">Odaberi datum odjave</string>
     <string name="content_desc_compare_fab">Usporedi odabrane hotele, %d hotela</string>
-    <string name="content_desc_hotel_card">%s, %s. %s. Dvostruki dodir za detalje.</string>
+    <string name="content_desc_hotel_card">%1$s, %2$s. %3$s. Dvostruki dodir za detalje.</string>
     <string name="content_desc_add_to_compare">Dodaj %s u usporedbu</string>
     <string name="content_desc_remove_from_compare">Ukloni %s iz usporedbe</string>
     <string name="content_desc_sort_asc">Sortiraj po cijeni, niska do visoka</string>
     <string name="content_desc_sort_desc">Sortiraj po cijeni, visoka do niska</string>
     <string name="content_desc_loading">Učitavanje</string>
+    <string name="content_desc_app_logo">Logo aplikacije</string>
+    <string name="content_desc_username_field">Polje za korisničko ime</string>
+    <string name="content_desc_language_field">Odabir jezika</string>
+    <string name="content_desc_currency_field">Željena valuta</string>
+    <string name="content_desc_app_version_info">Informacije o verziji aplikacije</string>
 
     <!-- Errors -->
     <string name="error_no_city">Nije odabran grad za pretragu.</string>
