@@ -1,10 +1,15 @@
 package com.example.hotelapp
 
+import android.Manifest
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.compose.setContent
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -16,6 +21,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.core.content.ContextCompat
 import androidx.navigation.compose.rememberNavController
 import com.example.hotelapp.navigation.AppBottomBar
 import com.example.hotelapp.navigation.BottomNavRoute
@@ -27,6 +33,11 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+    companion object {
+        /** Intent extra: ako je true, pri pokretanju aktivnosti otvori tab „Rezervacije”. */
+        const val EXTRA_OPEN_TAB_BOOKINGS = "open_tab_bookings"
+    }
 
     override fun attachBaseContext(newBase: Context) {
         super.attachBaseContext(contextWithLocale(newBase))
@@ -43,10 +54,23 @@ class MainActivity : ComponentActivity() {
                     var selectedTab by remember { mutableStateOf(BottomNavRoute.Search.route) }
                     val searchNavController = rememberNavController()
                     val context = LocalContext.current
+                    val notificationPermissionLauncher = rememberLauncherForActivityResult(
+                        contract = ActivityResultContracts.RequestPermission()
+                    ) { }
 
+                    LaunchedEffect(Unit) {
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
+                            ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED
+                        ) {
+                            notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+                        }
+                    }
                     LaunchedEffect(Unit) {
                         (context as? ComponentActivity)?.intent?.let { intent ->
                             searchNavController.handleDeepLink(intent)
+                            if (intent.getBooleanExtra(EXTRA_OPEN_TAB_BOOKINGS, false)) {
+                                selectedTab = BottomNavRoute.Bookings.route
+                            }
                         }
                     }
 

@@ -45,6 +45,11 @@
     <string name="create_booking_confirm">Confirm booking</string>
     <string name="create_booking_total">Total: %.2f €</string>
 
+    <!-- Booking reminder notification -->
+    <string name="notification_channel_reminders_name">Booking reminders</string>
+    <string name="notification_reminder_title">Reminder: check-in tomorrow</string>
+    <string name="notification_reminder_text">Your stay at %s starts tomorrow.</string>
+
     <!-- Booking success -->
     <string name="booking_success_title">Booking confirmed</string>
     <string name="booking_success_id_label">Booking ID</string>

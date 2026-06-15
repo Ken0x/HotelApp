@@ -40,6 +40,11 @@
     <string name="hotel_description">Beschreibung</string>
     <string name="hotel_description_placeholder">Keine Beschreibung verfügbar.</string>
 
+    <!-- Booking reminder notification -->
+    <string name="notification_channel_reminders_name">Buchungserinnerungen</string>
+    <string name="notification_reminder_title">Erinnerung: Check-in morgen</string>
+    <string name="notification_reminder_text">Ihr Aufenthalt in %s beginnt morgen.</string>
+
     <!-- Price / Currency -->
     <string name="price_on_request">Preis auf Anfrage</string>
     <string name="price_per_night_format">%1$.2f € / Nacht</string>
